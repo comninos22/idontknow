@@ -6,6 +6,28 @@
     android:layout_height="match_parent">
 
 
+    <Button
+        android:id="@+id/createBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="createAthelete"
+        app:layout_constraintBottom_toTopOf="@+id/createSport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateField" />
+
+    <Button
+        android:id="@+id/createSport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="createSport"
+        app:layout_constraintBottom_toTopOf="@+id/selectAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createBtn" />
+
     <EditText
         android:id="@+id/dateField"
         android:layout_width="wrap_content"
@@ -21,19 +43,6 @@
         app:layout_constraintTop_toBottomOf="@+id/countryField" />
 
     <EditText
-        android:id="@+id/countryField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Country"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/dateField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityOfOriginField" />
-
-    <EditText
         android:id="@+id/cityOfOriginField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +54,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameField" />
+
+    <EditText
+        android:id="@+id/countryField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Country"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/dateField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityOfOriginField" />
 
     <EditText
         android:id="@+id/lastNameField"
@@ -73,13 +95,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/createBtn"
+        android:id="@+id/selectAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="selectAll"
+        app:layout_constraintBottom_toTopOf="@+id/saveToFire"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createSport" />
+
+    <Button
+        android:id="@+id/saveToFire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SaveToFireBase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateField" />
+        app:layout_constraintTop_toBottomOf="@+id/selectAll" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

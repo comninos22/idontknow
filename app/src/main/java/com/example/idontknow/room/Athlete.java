@@ -1,23 +1,29 @@
 package com.example.idontknow.room;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import java.util.Date;
 @Entity(tableName = "Athlete",
         foreignKeys = {
         @ForeignKey(entity = Sport.class,
-                parentColumns = "id",
+                parentColumns = "sid",
                 childColumns = "sportid",
                 onDelete = ForeignKey.CASCADE)
         })
+
 public class Athlete {
 
 
+    @NonNull
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id")
+    @ColumnInfo(name="aid")
     private int id;
     @ColumnInfo(name="firstName")
     private String firstName;
@@ -33,13 +39,24 @@ public class Athlete {
     @ColumnInfo(name="dateOfBirth")
     private String dateOfBirth;
 
-    public Athlete(String firstName, String lastName, String cityOfOrigin, String country, String dateOfBirth,int sportid) {
+    @Ignore
+    public Athlete(int id, String firstName, String lastName, String cityOfOrigin, String country, int sportid, String dateOfBirth) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.cityOfOrigin = cityOfOrigin;
         this.country = country;
+        this.sportid = sportid;
         this.dateOfBirth = dateOfBirth;
-        this.sportid=sportid;
+    }
+
+    public Athlete(String firstName, String lastName, String cityOfOrigin, String country, int sportid, String dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cityOfOrigin = cityOfOrigin;
+        this.country = country;
+        this.sportid = sportid;
+        this.dateOfBirth = dateOfBirth;
     }
 
     @Override

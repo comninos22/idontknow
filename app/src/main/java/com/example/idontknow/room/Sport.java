@@ -1,13 +1,17 @@
 package com.example.idontknow.room;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Sport")
 public class Sport {
+
+    @NonNull
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id")
+    @ColumnInfo(name="sid")
     private int id;
 
     @ColumnInfo(name="name")
@@ -18,6 +22,14 @@ public class Sport {
 
     @ColumnInfo(name="type")
     private String type;
+
+    @Ignore
+    public Sport(int id, String name, String gender, String type) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.type = type;
+    }
 
     public Sport(String name, String gender, String type) {
         this.name = name;

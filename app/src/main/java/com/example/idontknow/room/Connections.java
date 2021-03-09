@@ -9,7 +9,7 @@ public class Connections {
     private AppDatabase database;
 
     private Connections(Context context){
-        database= Room.databaseBuilder(context,AppDatabase.class,"SportsDB").allowMainThreadQueries().build();
+        database= Room.databaseBuilder(context,AppDatabase.class,"SportsDB").allowMainThreadQueries().fallbackToDestructiveMigration().build();
 
     }
     public static Connections getInstance(Context context){
