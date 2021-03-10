@@ -36,8 +36,10 @@ public class Sport {
         this.gender = gender;
         this.type = type;
     }
+    public Sport(){
 
-    @Override
+
+    }    @Override
     public String toString() {
         return "Sport{" +
                 "id=" + id +
