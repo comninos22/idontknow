@@ -64,7 +64,7 @@ public class WelcomeFragment extends Fragment {
 ////                        dateOfBirthField.getText().toString(),0
 ////                );
 //                Athlete athlete = new Athlete(1,"takhs","lastname","city","country",1,"11111");
-                Athlete athlete = new Athlete("takhs","lastname","city","country",1,"11111");
+                Athlete athlete = new Athlete("takhs","lastname","city","country",1,"11111","imgurl");
                 makeAthlete(athlete);
             }
         });
@@ -115,8 +115,8 @@ public class WelcomeFragment extends Fragment {
 
     public void addTofireSote(){
         Sport sport = new Sport(1,"poker","travelaki","solo");
-        Athlete athlete1= new Athlete(1,"takhs","lastname","alvania","alvania",2,"454/1/44/");
-        Athlete athlete2= new Athlete(1,"kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/");
+        Athlete athlete1= new Athlete(1,"takhs","lastname","alvania","alvania",2,"454/1/44/","imgurl");
+        Athlete athlete2= new Athlete(1,"kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/","imgurl");
         Map<String, Object> match = new HashMap<>();
         match.put("date", "Ada");
         match.put("city", "Lovelace");

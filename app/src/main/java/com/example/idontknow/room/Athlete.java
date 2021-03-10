@@ -25,22 +25,44 @@ public class Athlete {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="aid")
     private int id;
+
     @ColumnInfo(name="firstName")
     private String firstName;
+
     @ColumnInfo(name="lastName")
     private String lastName;
+
     @ColumnInfo(name="cityOfOrigin")
     private String cityOfOrigin;
+
     @ColumnInfo(name="country")
     private String country;
-    @ColumnInfo(name="sportid")
 
+
+    @ColumnInfo(name="sportid")
     private int sportid;
+
     @ColumnInfo(name="dateOfBirth")
     private String dateOfBirth;
 
+    @ColumnInfo(name = "imgUrl")
+    private String imgUrl;
+
+
+
+    public Athlete(String firstName, String lastName, String cityOfOrigin, String country, int sportid, String dateOfBirth, String imgUrl) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cityOfOrigin = cityOfOrigin;
+        this.country = country;
+        this.sportid = sportid;
+        this.dateOfBirth = dateOfBirth;
+        this.imgUrl = imgUrl;
+    }
+
+
     @Ignore
-    public Athlete(int id, String firstName, String lastName, String cityOfOrigin, String country, int sportid, String dateOfBirth) {
+    public Athlete(int id, String firstName, String lastName, String cityOfOrigin, String country, int sportid, String dateOfBirth, String imgUrl) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,15 +70,7 @@ public class Athlete {
         this.country = country;
         this.sportid = sportid;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public Athlete(String firstName, String lastName, String cityOfOrigin, String country, int sportid, String dateOfBirth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cityOfOrigin = cityOfOrigin;
-        this.country = country;
-        this.sportid = sportid;
-        this.dateOfBirth = dateOfBirth;
+        this.imgUrl = imgUrl;
     }
 
     @Override
@@ -67,8 +81,19 @@ public class Athlete {
                 ", lastName='" + lastName + '\'' +
                 ", cityOfOrigin='" + cityOfOrigin + '\'' +
                 ", country='" + country + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", sportid=" + sportid +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 '}';
+    }
+
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public int getSportid() {
