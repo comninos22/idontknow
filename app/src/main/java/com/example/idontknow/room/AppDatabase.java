@@ -9,5 +9,5 @@ import androidx.room.TypeConverter;
 public abstract class AppDatabase extends RoomDatabase {
     public abstract AthleteDAO getAthleteDAO();
     public abstract SportDAO getSportDAO();
-
+    public abstract TeamDAO getTeamDAO();
 }
