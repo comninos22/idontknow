@@ -11,19 +11,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.idontknow.room.Athlete;
 import com.example.idontknow.room.AthleteDAO;
 import com.example.idontknow.room.Connections;
+import com.example.idontknow.room.SoloMatch;
 import com.example.idontknow.room.Sport;
 import com.example.idontknow.room.SportAndAthlete;
 import com.example.idontknow.room.SportDAO;
 import com.example.idontknow.room.Team;
 import com.example.idontknow.room.TeamMatch;
-import com.example.idontknow.room.TeamMatchResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,11 +34,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class WelcomeFragment extends Fragment {
     AthleteDAO athleteDAO;
@@ -71,7 +68,15 @@ public class WelcomeFragment extends Fragment {
                 Team team1= new Team(1,"ASDASDASD","toumpa","the","gr",2,"454/1/44/","imgurl");
                 Team team2= new Team(2,"QWEQWEQWE","karaiskaki","ath","gr",2,"454/1/22244/","imgurl");
                 TeamMatch match1=new TeamMatch(team1,team2,sport2,"12/2/4242","axladoxori serrwn","ellada");
-                addTeamMatch(match1);
+                LinkedList<Athlete> athletes=new LinkedList<Athlete>();
+                athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
+                athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
+                athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
+                athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
+                athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
+                athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
+                SoloMatch match3=new SoloMatch(sport2,"asasd","asdasd","asdasd",athletes);
+                addTeamMatch(match3);
 //                firstNameField=getActivity().findViewById(R.id.FirstNameField);
 //                lastNameField=getActivity().findViewById(R.id.lastNameField);
 //                cityOfOriginField=getActivity().findViewById(R.id.cityOfOriginField);
@@ -217,9 +222,9 @@ public class WelcomeFragment extends Fragment {
                 });
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void addTeamMatch(TeamMatch match){
+    public void addTeamMatch(SoloMatch match){
 
-        fireDB.collection("TeamMatches")
+        fireDB.collection("SoloMatches")
                 .add(match)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -246,7 +251,7 @@ public class WelcomeFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 TeamMatch match=document.toObject(TeamMatch.class);
-                               // System.out.println(document.getData().toString());
+                                System.out.println("AAAAAAA: "+match);
                                Log.d(TAG, document.getId() + " => " + document.getData());
                             }
                         } else {

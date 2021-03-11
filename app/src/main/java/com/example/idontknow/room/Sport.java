@@ -23,6 +23,8 @@ public class Sport {
     @ColumnInfo(name="type")
     private String type;
 
+
+
     @Ignore
     public Sport(int id, String name, String gender, String type) {
         this.id = id;

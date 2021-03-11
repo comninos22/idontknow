@@ -9,6 +9,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.Relation;
 
+import java.io.Serializable;
 import java.util.Date;
 @Entity(tableName = "Athlete",
         foreignKeys = {
@@ -18,7 +19,7 @@ import java.util.Date;
                 onDelete = ForeignKey.CASCADE)
         })
 
-public class Athlete {
+public class Athlete  {
 
 
     @NonNull
