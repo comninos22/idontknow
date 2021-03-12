@@ -17,11 +17,12 @@ import com.example.idontknow.room.Connections;
 import java.util.List;
 
 public class FirstFragment extends Fragment {
-    AthleteDAO athleteDAO;
+    Connections roomdb;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        athleteDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getAthleteDAO();
+
+        roomdb=Connections.getInstance(getActivity().getApplicationContext());
         View v=inflater.inflate(R.layout.fragment_first, container, false);
 
 // Inflate the layout for this fragment
@@ -31,9 +32,10 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-        List<Athlete> list=athleteDAO.getAthletes();
+        List<Athlete> list=roomdb.getAthletes();
         LinearLayout l=view.findViewById(R.id.flexView2);
         for(Athlete ath : list){
+            System.out.println(ath);
             Button b=new Button(this.getContext());
             b.setText(ath.getFirstName());
             l.addView(b);

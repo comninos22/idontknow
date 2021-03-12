@@ -10,6 +10,7 @@ import java.util.LinkedList;
 public class SoloMatch extends Match{
     private int numberOfPlayers;
     private LinkedList<Athlete> athletes;
+    public SoloMatch(){}
     @RequiresApi(api = Build.VERSION_CODES.N)
     public SoloMatch(Sport sport, String date, String city, String country, LinkedList<Athlete> athletes) {
         super(sport, date, city, country);
@@ -24,6 +25,19 @@ public class SoloMatch extends Match{
         }
     }
 
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
 
+    public void setNumberOfPlayers(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
+    }
 
+    public LinkedList<Athlete> getAthletes() {
+        return athletes;
+    }
+
+    public void setAthletes(LinkedList<Athlete> athletes) {
+        this.athletes = athletes;
+    }
 }

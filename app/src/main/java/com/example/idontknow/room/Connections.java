@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
+import java.util.List;
+
 public class Connections {
     private static Connections instance;
     private AppDatabase database;
@@ -25,6 +27,31 @@ public class Connections {
             }
             return instance;
         }
+    }
+
+    public List<Team> getTeams(){
+        try{
+            return teamDAO.getTeam();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public List<Athlete> getAthletes(){
+        try{
+            return athleteDAO.getAthletes();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public List<Sport> getSports(){
+        try{
+            return sportDAO.getSports();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     public void makeAthlete(Athlete athlete){

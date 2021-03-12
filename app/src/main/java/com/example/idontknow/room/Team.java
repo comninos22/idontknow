@@ -15,7 +15,6 @@ import javax.annotation.Nonnull;
                         childColumns = "sportid",
                         onDelete = ForeignKey.CASCADE)
         })
-
 public class Team {
 
     @PrimaryKey(autoGenerate = true)
