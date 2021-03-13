@@ -9,35 +9,37 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.idontknow.room.Athlete;
+import com.example.idontknow.R;
+import com.example.idontknow.controllers.FirstFragment;
+import com.example.idontknow.controllers.SecondFragment;
+import com.example.idontknow.controllers.ThirdFragment;
+import com.example.idontknow.controllers.WelcomeFragment;
 import com.example.idontknow.room.AthleteDAO;
 import com.example.idontknow.room.Connections;
-import com.google.android.material.navigation.NavigationView;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
-import java.util.ArrayList;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private  Toolbar toolbar;
     private NavigationView nvDrawer;
-    AthleteDAO athleteDAO;
 
+    FloatingActionMenu materialDesignFAM;
+    FloatingActionButton floatingActionInsert, floatingActionUpdate, floatingActionDelete;
 
     // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
     private ActionBarDrawerToggle drawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        athleteDAO=Connections.getInstance(getApplicationContext()).getDatabase().getAthleteDAO();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -57,7 +59,15 @@ public class MainActivity extends AppCompatActivity {
         setupDrawerContent(nvDrawer);
         getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new WelcomeFragment()).commit();
 
+
     }
+
+    public void alterBehaviour(){
+
+    }
+
+
+
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -95,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment,"welcomeFrag").commit();
 
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);

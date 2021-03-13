@@ -54,7 +54,7 @@ public class Team {
         this.established = established;
         this.imgURL=imgURL;
     }
-
+    @Ignore
     public Team(String teamName, String stadiumName, String headquarters, String country, int sportid, String established,String imgURL) {
         this.teamName = teamName;
         this.stadiumName = stadiumName;

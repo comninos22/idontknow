@@ -3,6 +3,7 @@
     package="com.example.idontknow">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,11 +11,12 @@
         android:supportsRtl="true"
 
         android:theme="@style/Theme.Idontknow">
-        <activity android:name=".MainActivity">
 
-            <intent-filter>
+        <activity
+            android:label="Logo"
+            android:name=".MainActivity" >
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

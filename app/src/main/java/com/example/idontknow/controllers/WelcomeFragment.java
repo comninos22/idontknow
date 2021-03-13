@@ -1,4 +1,4 @@
-package com.example.idontknow;
+package com.example.idontknow.controllers;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.example.idontknow.R;
 import com.example.idontknow.room.Athlete;
 import com.example.idontknow.room.AthleteDAO;
 import com.example.idontknow.room.Connections;
@@ -49,7 +50,8 @@ public class WelcomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        Toast toast = Toast. makeText(getActivity().getApplicationContext(), "This is a message displayed in a Toast", Toast. LENGTH_SHORT);
+        toast.show();
         View v=(View) inflater.inflate(R.layout.fragment_welcome, container, false);
         athleteDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getAthleteDAO();
         sportDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getSportDAO();
@@ -97,7 +99,7 @@ public class WelcomeFragment extends Fragment {
         firebtnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTofireSote();
+
             }
         });
         selectFromFirebaseBtn.setOnClickListener(new View.OnClickListener() {
@@ -148,79 +150,7 @@ public class WelcomeFragment extends Fragment {
 
 
 
-    public void addTofireSote(){
-        Sport sport1 = new Sport(1,"poker","travelaki","solo");
-        Athlete athlete1= new Athlete(1,"takhs","lastname","alvania","alvania",2,"454/1/44/","imgurl");
-        Athlete athlete2= new Athlete(1,"kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/","imgurl");
-        Map<String, Object> soloMatch = new HashMap<>();
-        soloMatch.put("date", "Ada");
-        soloMatch.put("winner", athlete1.getFirstName());
-        soloMatch.put("winnerPerformance", "10s");
-        soloMatch.put("city", "Lovelace");
-        soloMatch.put("country", 1815);
-        soloMatch.put("Sport", sport1);
-        soloMatch.put("athlete1", athlete1);
-        soloMatch.put("athlete2", athlete2);
 
-
-
-        fireDB.collection("SoloMatches")
-                .add(soloMatch)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getActivity(), "DocumentSnapshot added with ID: " + documentReference.getId(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Error:"+e, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        Sport sport2 = new Sport(2,"football","male","team");
-        Team team1= new Team(1,"PAOK","toumpa","the","gr",2,"454/1/44/","imgurl");
-        Team team2= new Team(2,"OSFP","karaiskaki","ath","gr",2,"454/1/22244/","imgurl");
-        Map<String, Object> match = new HashMap<>();
-        Map<String, Object> score = new HashMap<>();
-        List team1ScoreTimes=new LinkedList();
-        team1ScoreTimes.add(20);
-        team1ScoreTimes.add(30);
-        List team2ScoreTimes=new LinkedList();
-        team2ScoreTimes.add(20);
-        team2ScoreTimes.add(30);
-
-        score.put(team1.getTeamName(),team1ScoreTimes);
-        score.put(team2.getTeamName(),team2ScoreTimes);
-
-        match.put("date", "Ada");
-        match.put("winnerTeam", team1.getTeamName());
-        match.put("winnerScore", 2);
-        match.put("loserTeam", team2.getTeamName());
-        match.put("loserScore", 1);
-        match.put("score", score);
-        match.put("city", "Lovelace");
-        match.put("country", "1815");
-        match.put("Sport", sport2);
-        match.put("team1", team1);
-        match.put("team2", team2);
-
-        fireDB.collection("TeamMatches")
-                .add(match)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(getActivity(), "DocumentSnapshot added with ID: " + documentReference.getId(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Error:"+e, Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void addTeamMatch(SoloMatch match){
 

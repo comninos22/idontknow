@@ -4,12 +4,13 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-public class SoloMatch extends Match{
+public class SoloMatch extends Match {
     private int numberOfPlayers;
-    private LinkedList<Athlete> athletes;
+    private List<Athlete> athletes;
     public SoloMatch(){}
     @RequiresApi(api = Build.VERSION_CODES.N)
     public SoloMatch(Sport sport, String date, String city, String country, LinkedList<Athlete> athletes) {
@@ -21,7 +22,7 @@ public class SoloMatch extends Match{
             Athlete ath2=athletes.poll();
             super.setPerformance(new TeamScore(ath1,ath2));
         }else{
-            super.setPerformance(new PerformanceOfParticipants(this.athletes));
+            super.setPerformance(new PerformanceOfParticipants((LinkedList)this.athletes));
         }
     }
 
@@ -33,11 +34,11 @@ public class SoloMatch extends Match{
         this.numberOfPlayers = numberOfPlayers;
     }
 
-    public LinkedList<Athlete> getAthletes() {
+    public List<Athlete> getAthletes() {
         return athletes;
     }
 
-    public void setAthletes(LinkedList<Athlete> athletes) {
-        this.athletes = athletes;
+    public void setAthletes(List<Athlete> athletes) {
+        this.athletes =  athletes;
     }
 }

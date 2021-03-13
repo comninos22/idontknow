@@ -32,7 +32,7 @@ public class Sport {
         this.gender = gender;
         this.type = type;
     }
-
+    @Ignore
     public Sport(String name, String gender, String type) {
         this.name = name;
         this.gender = gender;

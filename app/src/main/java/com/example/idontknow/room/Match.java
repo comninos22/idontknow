@@ -1,5 +1,7 @@
 package com.example.idontknow.room;
 
+import com.example.idontknow.room.Sport;
+
 public abstract class Match {
     private Sport sport;
     private String date;

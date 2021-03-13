@@ -31,6 +31,13 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.github.clans:fab:1.6.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:23.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:23.1.0'
     //noinspection GradleCompatible
     // Room components
     implementation "androidx.room:room-runtime:2.2.5"

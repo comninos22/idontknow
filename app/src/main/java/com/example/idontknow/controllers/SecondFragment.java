@@ -1,4 +1,4 @@
-package com.example.idontknow;
+package com.example.idontknow.controllers;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.example.idontknow.R;
 import com.example.idontknow.application.GlobalReference;
 import com.example.idontknow.callbacks.PromiseLinkedList;
 import com.example.idontknow.room.Athlete;
@@ -20,6 +22,8 @@ import com.example.idontknow.room.Connections;
 import com.example.idontknow.room.FireDB;
 import com.example.idontknow.room.SoloMatch;
 import com.example.idontknow.room.Sport;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -64,7 +68,6 @@ public class SecondFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                System.out.println("eimai o antwnis kai eimai mia aderfi :\\");
                 Athlete athlete1= new Athlete("takhs","lastname","alvania","alvania",2,"454/1/44/","imgurl");
                 Athlete athlete2= new Athlete("kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/","imgurl");
                 roomdb.makeSport(new Sport(2,"football","male","team"));
@@ -79,5 +82,35 @@ public class SecondFragment extends Fragment {
             }
         });
     }
+    public void floatingBullcrap(){
+        FloatingActionMenu materialDesignFAM;
+        FloatingActionButton floatingActionInsert, floatingActionUpdate, floatingActionDelete;
+        materialDesignFAM = (FloatingActionMenu) getActivity().findViewById(R.id.material_design_android_floating_action_menu);
+        floatingActionInsert = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_insert);
+        floatingActionUpdate = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_update);
+        floatingActionDelete = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_delete);
 
+
+
+        floatingActionInsert.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Toast toast = Toast. makeText(getActivity().getApplicationContext(), "This is a message displayed in a Toast", Toast. LENGTH_SHORT);
+                toast.show();
+
+            }
+        });
+        floatingActionUpdate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu second item clicked
+
+            }
+        });
+        floatingActionDelete.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu third item clicked
+
+            }
+        });
+    }
 }

@@ -4,11 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-
-public class TeamMatch extends Match{
+public class TeamMatch extends Match {
     private Team team1;
     private Team team2;
 

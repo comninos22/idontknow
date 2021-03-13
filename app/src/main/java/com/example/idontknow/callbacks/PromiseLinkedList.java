@@ -2,6 +2,8 @@ package com.example.idontknow.callbacks;
 
 import java.util.LinkedList;
 
-public interface PromiseLinkedList {
-    void methodToCallBack(LinkedList object);
+public class PromiseLinkedList  {
+    public void methodToCallBack(LinkedList object) {
+
+    }
 }
