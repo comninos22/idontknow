@@ -4,15 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Sport")
+@Entity(tableName = "Sport", indices = {@Index(value = {"sid"}, unique = true)})
 public class Sport {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="sid")
-    private int id;
+    private int sid;
 
     @ColumnInfo(name="name")
     private String name;
@@ -27,7 +28,7 @@ public class Sport {
 
     @Ignore
     public Sport(int id, String name, String gender, String type) {
-        this.id = id;
+        this.sid = sid;
         this.name = name;
         this.gender = gender;
         this.type = type;
@@ -44,19 +45,19 @@ public class Sport {
     }    @Override
     public String toString() {
         return "Sport{" +
-                "id=" + id +
+                "id=" + sid +
                 ", name='" + name + '\'' +
                 ", gender=" + gender +
                 ", type=" + type +
                 '}';
     }
 
-    public int getId() {
-        return id;
+    public int getSid() {
+        return sid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSid(int id) {
+        this.sid = id;
     }
 
     public String getName() {

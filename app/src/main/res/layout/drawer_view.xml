@@ -8,25 +8,27 @@
         <item
             android:id="@+id/nav_first_fragment"
             android:icon="@drawable/ic_1"
-            android:title="First" />
+            android:title="Athletes" />
         <item
             android:id="@+id/nav_second_fragment"
             android:icon="@drawable/ic_2"
-            android:title="Second" />
+            android:title="Teams" />
         <item
             android:id="@+id/nav_third_fragment"
             android:icon="@drawable/ic_3"
-            android:title="Third" />
+            android:title="Sports" />
     </group>
     <item android:title="Sub items">
         <menu>
             <group android:checkableBehavior="single">
                 <item
+                    android:id="@+id/nav_sub_first_fragment"
                     android:icon="@drawable/ic_1"
-                    android:title="Sub item 1" />
+                    android:title="Solo matches" />
                 <item
+                    android:id="@+id/nav_sub_second_fragment"
                     android:icon="@drawable/ic_2"
-                    android:title="Sub item 2" />
+                    android:title="Team matches" />
             </group>
         </menu>
     </item>

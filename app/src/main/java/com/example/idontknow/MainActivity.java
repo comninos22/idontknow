@@ -10,21 +10,15 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.idontknow.R;
-import com.example.idontknow.controllers.FirstFragment;
-import com.example.idontknow.controllers.SecondFragment;
-import com.example.idontknow.controllers.ThirdFragment;
+import com.example.idontknow.controllers.AthleteFragment;
+import com.example.idontknow.controllers.TeamFragment;
+import com.example.idontknow.controllers.SportFragment;
 import com.example.idontknow.controllers.WelcomeFragment;
-import com.example.idontknow.room.AthleteDAO;
-import com.example.idontknow.room.Connections;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
@@ -68,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public void onBackPressed(){
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStackImmediate();
+        } else {
+            finish();
+        }
+    }
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
@@ -85,16 +87,22 @@ public class MainActivity extends AppCompatActivity {
         Class fragmentClass;
         switch(menuItem.getItemId()) {
             case R.id.nav_first_fragment:
-                fragmentClass = FirstFragment.class;
+                fragmentClass = AthleteFragment.class;
                 break;
             case R.id.nav_second_fragment:
-                fragmentClass = SecondFragment.class;
+                fragmentClass = TeamFragment.class;
                 break;
             case R.id.nav_third_fragment:
-                fragmentClass = ThirdFragment.class;
+                fragmentClass = SportFragment.class;
+                break;
+            case R.id.nav_sub_first_fragment:
+                fragmentClass = SportFragment.class;
+                break;
+            case R.id.nav_sub_second_fragment:
+                fragmentClass = SportFragment.class;
                 break;
             default:
-                fragmentClass = FirstFragment.class;
+                fragmentClass = WelcomeFragment.class;
         }
 
         try {

@@ -123,7 +123,7 @@ public class WelcomeFragment extends Fragment {
         selectAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<SportAndAthlete> all = athleteDAO.getAthletesWithSportId();
+                List<SportAndAthlete> all = athleteDAO.getAthletesWithSport();
                 System.out.println(Arrays.toString(all.toArray()));
             }
         });

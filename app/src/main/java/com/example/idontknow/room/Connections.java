@@ -120,6 +120,24 @@ public class Connections {
         }
     }
 
+    public List<SportAndTeam> getTeamsWithSport(){
+        try{
+            return teamDAO.getTeamWithSport();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public List<SportAndAthlete> getAthletesWithSport(){
+        try{
+            return athleteDAO.getAthletesWithSport();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public AppDatabase getDatabase(){
         return database;
     }

@@ -28,7 +28,7 @@ public interface  AthleteDAO {
     Athlete getAthleteById(int id);
 
     @Query("select * from Athlete A join Sport S on (A.sportid = S.sid)")
-    List<SportAndAthlete> getAthletesWithSportId();
+    List<SportAndAthlete> getAthletesWithSport();
 
     @Query("DELETE FROM Athlete")
     void deleteAllFromAthlete();

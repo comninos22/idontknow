@@ -13,12 +13,15 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
 
-public class ThirdFragment extends Fragment {
+public class SportFragment extends Fragment {
+
+    FloatingActionMenu materialDesignFAM;
+    FloatingActionButton floatingActionInsert, floatingActionUpdate, floatingActionDelete;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false);
+        return inflater.inflate(R.layout.sport_fragment_view, container, false);
     }
     @Override
     public void onResume(){
@@ -35,8 +38,6 @@ public class ThirdFragment extends Fragment {
         toast.show();
     }
     public void floatingBullcrap(){
-        FloatingActionMenu materialDesignFAM;
-        FloatingActionButton floatingActionInsert, floatingActionUpdate, floatingActionDelete;
         materialDesignFAM = (FloatingActionMenu) getActivity().findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionInsert = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_insert);
         floatingActionUpdate = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_update);
