@@ -1,21 +1,16 @@
 package com.example.idontknow.controllers;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 
-import android.os.StrictMode;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.idontknow.R;
 import com.example.idontknow.room.Athlete;
 import com.example.idontknow.room.Connections;
@@ -31,59 +27,71 @@ import com.example.idontknow.utils.ImageHandler;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
-import java.io.IOException;
-import java.net.URL;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AthleteFragment extends Fragment {
     Connections roomdb;
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton floatingActionInsert, floatingActionUpdate, floatingActionDelete;
+    Button deleteAllBtn;
+    LinkedList<ConstraintLayout> allPreviews = new LinkedList<ConstraintLayout>();
+    List<SportAndAthlete> athleteList;
+    LinearLayout contentArea;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        roomdb=Connections.getInstance(getActivity().getApplicationContext());
-        View v=inflater.inflate(R.layout.team_fragment_view, container, false);
+        roomdb = Connections.getInstance(getActivity().getApplicationContext());
+        View v = inflater.inflate(R.layout.team_fragment_view, container, false);
 
 // Inflate the layout for this fragment
         return v;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        Athlete athlete1= new Athlete("takhs","lastname","alvania","alvania",2,"454/1/44/","imgurl");
+              Athlete athlete2= new Athlete("kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/","imgurl");
+              roomdb.makeAthlete(athlete1);
+        roomdb.makeAthlete(athlete1);
+        roomdb.makeAthlete(athlete1);
+        roomdb.makeAthlete(athlete1);
+
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-        List<SportAndAthlete> list=roomdb.getAthletesWithSport();
-        LinearLayout l=view.findViewById(R.id.flexView2);
-
+        athleteList = roomdb.getAthletesWithSport();
+        contentArea = view.findViewById(R.id.flexView2);
+        deleteAllBtn=getActivity().findViewById(R.id.deleteAllButton);
         floatingBullcrap();
         // get your outer relative layout
 
 
-
 // inflate content layout and add it to the relative layout as second child
 // add as second child, therefore pass index 1 (0,1,...)
-        l.removeAllViews();
+        contentArea.removeAllViews();
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        for(SportAndAthlete ath: list){
-            ConstraintLayout newView=(ConstraintLayout)layoutInflater.inflate(R.layout.athlete_preview, (ViewGroup) view,false);
-            ImageHandler handler=new ImageHandler(getContext());
+        for (SportAndAthlete ath : athleteList) {
+            int baseId = 2000000;
+            ConstraintLayout newView = (ConstraintLayout) layoutInflater.inflate(R.layout.athlete_preview, (ViewGroup) view, false);
+            ImageHandler handler = new ImageHandler(getContext());
 
+            ImageView v = (ImageView) newView.getChildAt(0);
+            Glide.with(this).load("https://static2.car.gr/13402009_0_z.jpg").into(v);
+            // ((ImageView) newView.getChildAt(0)).setImageBitmap(handler.loadImageFromStorage(ath.getAthlete().getImgUrl()));
 
-
-            ((ImageView) newView.getChildAt(0)).setImageBitmap(handler.loadImageFromStorage(ath.getAthlete().getImgUrl()));
-
-            ((TextView) newView.getChildAt(1)).setText(ath.getAthlete().getFirstName()+" "+ath.getAthlete().getLastName());
+            https:
+//pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg
+            ((TextView) newView.getChildAt(1)).setText(ath.getAthlete().getFirstName() + " " + ath.getAthlete().getLastName());
 
             ((TextView) newView.getChildAt(2)).setText(ath.getAthlete().getCountry());
 
             ((TextView) newView.getChildAt(3)).setText(ath.getSport().getName());
+            ((TextView) newView.getChildAt(4)).setText(Integer.toString(ath.getAthlete().getId()));
 
-            l.addView(newView, 0 );
-
-
-
+            contentArea.addView(newView, 0);
+            allPreviews.add(newView);
 
 
         }
@@ -91,10 +99,7 @@ public class AthleteFragment extends Fragment {
     }
 
 
-
-
-
-    public void floatingBullcrap(){
+    public void floatingBullcrap() {
 
         materialDesignFAM = (FloatingActionMenu) getActivity().findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionInsert = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_insert);
@@ -104,14 +109,31 @@ public class AthleteFragment extends Fragment {
         floatingActionInsert.setLabelText("Create an athlete");
         floatingActionUpdate.setLabelText("Edit an athlete");
 
+
+        materialDesignFAM.setOnMenuButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (materialDesignFAM.isOpened()) {
+                    LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
+                    while (!temp.isEmpty()) {
+                        ((CheckBox) temp.poll().getChildAt(5)).setVisibility(View.INVISIBLE);
+                    }
+                    materialDesignFAM.close(true);
+                } else{
+                    materialDesignFAM.open(true);
+                }
+
+                System.out.println("ahahahahah");
+            }
+        });
         floatingActionInsert.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Toast toast = Toast. makeText(getActivity().getApplicationContext(), "This is a message displayed in a Toast", Toast. LENGTH_SHORT);
-                toast.show();
 
             }
         });
+
         floatingActionUpdate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO something when floating action menu second item clicked
@@ -119,19 +141,58 @@ public class AthleteFragment extends Fragment {
             }
         });
         floatingActionDelete.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //TODO something when floating action menu third item clicked
 
+            public void onClick(View v) {
+                LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
+                while (!temp.isEmpty()) {
+                    ((CheckBox) temp.poll().getChildAt(5)).setVisibility(View.VISIBLE);
+                }
+                deleteAllBtn.setOnClickListener(new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+
+
+                        LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
+
+                        int counter=1;
+                        while (!temp.isEmpty()) {
+                            ConstraintLayout element=(temp.pollFirst());
+                            CheckBox checkBox=(CheckBox)element.getChildAt(5);
+
+                            TextView hiddenId=(TextView)element.getChildAt(4);
+                            if(checkBox.isChecked()){
+                                System.out.println();
+
+                                for(SportAndAthlete ath: athleteList){
+                                    if(ath.getAthlete().getId()==Integer.parseInt(hiddenId.getText().toString())){
+                                        System.out.println(counter);
+                                        roomdb.deleteAthlete(ath.getAthlete());
+                                        checkBox.setChecked(false);
+                                        contentArea.removeViewAt(counter);
+
+                                        break;
+
+                                    }
+                                }
+
+                            }
+                        counter++;
+                        }
+                    }
+                });
             }
         });
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         materialDesignFAM.showMenu(true);
-        Toast toast = Toast. makeText(getActivity().getApplicationContext(), "resumed", Toast. LENGTH_SHORT);
+        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "resumed", Toast.LENGTH_SHORT);
         toast.show();
     }
+
     @Override
     public void onPause() {
         super.onPause();

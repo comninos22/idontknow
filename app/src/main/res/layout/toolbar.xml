@@ -10,4 +10,14 @@
     android:background="?colorPrimary"
 
     >
+
+    <Button
+        android:id="@+id/deleteAllButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#BFBF0A20"
+        android:text="Delete All"
+        android:textColor="#CFCFCF" />
 </androidx.appcompat.widget.Toolbar>

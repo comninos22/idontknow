@@ -71,8 +71,7 @@ public class TeamFragment extends Fragment {
 //            @RequiresApi(api = Build.VERSION_CODES.N)
 //            @Override
 //            public void onClick(View v) {
-//                Athlete athlete1= new Athlete("takhs","lastname","alvania","alvania",2,"454/1/44/","imgurl");
-//                Athlete athlete2= new Athlete("kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/","imgurl");
+//
 //                roomdb.makeSport(new Sport(2,"football","male","team"));
 //                roomdb.makeAthlete(athlete1);
 //                roomdb.makeAthlete(athlete2);
