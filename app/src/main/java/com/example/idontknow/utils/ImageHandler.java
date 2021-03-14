@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -25,7 +26,8 @@ public class ImageHandler {
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+        String name=RandomGenerator.random();
+        File mypath=new File(directory,"/"+name+".png");
 
         FileOutputStream fos = null;
         try {
@@ -41,22 +43,17 @@ public class ImageHandler {
                 e.printStackTrace();
             }
         }
-        return directory.getAbsolutePath();
+        return directory.getAbsolutePath()+"/"+name+".png";
     }
-    public Bitmap loadImageFromStorage(String path)
+    public Bitmap loadImageFromStorage(String filePath)
     {
 
-        try {
-            File f=new File(path, "profile.jpg");
-            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
-//            ImageView img=(ImageView)context.findViewById(R.id.imgPicker);
-//            img.setImageBitmap(b);
-            return b;
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
+        File sd = Environment.getExternalStorageDirectory();
+        File image = new File(filePath);
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        Bitmap bitmap = BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
+
+        return bitmap;
+
     }
 }

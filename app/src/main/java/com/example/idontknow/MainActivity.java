@@ -8,6 +8,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -30,10 +32,24 @@ public class MainActivity extends AppCompatActivity {
 
     // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
     private ActionBarDrawerToggle drawerToggle;
+    private static final int REQUEST_WRITE_PERMISSION = 786;
+
+
+
+
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
+        } else {
+
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
+        requestPermission();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -64,11 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStackImmediate();
-        } else {
-            finish();
-        }
+
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -113,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment,"welcomeFrag").commit();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment,"firstLayerDeep").addToBackStack("firstLayerDeep").commit();
 
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);

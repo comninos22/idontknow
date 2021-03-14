@@ -19,5 +19,6 @@
         android:layout_marginRight="10dp"
         android:backgroundTint="#BFBF0A20"
         android:text="Delete All"
-        android:textColor="#CFCFCF" />
+        android:textColor="#CFCFCF"
+        android:visibility="invisible" />
 </androidx.appcompat.widget.Toolbar>

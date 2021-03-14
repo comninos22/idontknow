@@ -43,7 +43,7 @@ public class AthleteFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         roomdb = Connections.getInstance(getActivity().getApplicationContext());
-        View v = inflater.inflate(R.layout.team_fragment_view, container, false);
+        View v = inflater.inflate(R.layout.athlete_fragment_view, container, false);
 
 // Inflate the layout for this fragment
         return v;
@@ -52,12 +52,7 @@ public class AthleteFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        Athlete athlete1= new Athlete("takhs","lastname","alvania","alvania",2,"454/1/44/","imgurl");
-              Athlete athlete2= new Athlete("kostas","lastnameeee","alvaniaoleeee","alvaniaoleeee",2,"454/1/22244/","imgurl");
-              roomdb.makeAthlete(athlete1);
-        roomdb.makeAthlete(athlete1);
-        roomdb.makeAthlete(athlete1);
-        roomdb.makeAthlete(athlete1);
+
 
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
@@ -78,10 +73,10 @@ public class AthleteFragment extends Fragment {
             ImageHandler handler = new ImageHandler(getContext());
 
             ImageView v = (ImageView) newView.getChildAt(0);
-            Glide.with(this).load("https://static2.car.gr/13402009_0_z.jpg").into(v);
-            // ((ImageView) newView.getChildAt(0)).setImageBitmap(handler.loadImageFromStorage(ath.getAthlete().getImgUrl()));
+            //Glide.with(this).load("https://static2.car.gr/13402009_0_z.jpg").into(v);
+            ((ImageView) newView.getChildAt(0)).setImageBitmap(handler.loadImageFromStorage(ath.getAthlete().getImgUrl()));
 
-            https:
+
 //pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg
             ((TextView) newView.getChildAt(1)).setText(ath.getAthlete().getFirstName() + " " + ath.getAthlete().getLastName());
 
@@ -110,19 +105,14 @@ public class AthleteFragment extends Fragment {
         floatingActionUpdate.setLabelText("Edit an athlete");
 
 
+
+
+
         materialDesignFAM.setOnMenuButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (materialDesignFAM.isOpened()) {
-                    LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
-                    while (!temp.isEmpty()) {
-                        ((CheckBox) temp.poll().getChildAt(5)).setVisibility(View.INVISIBLE);
-                    }
-                    materialDesignFAM.close(true);
-                } else{
-                    materialDesignFAM.open(true);
-                }
+                handleFAM();
 
                 System.out.println("ahahahahah");
             }
@@ -130,7 +120,7 @@ public class AthleteFragment extends Fragment {
         floatingActionInsert.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new CreateAthleteFragment(),"CreateAthleteFragment").addToBackStack("CreateAthleteFragment").commit();
             }
         });
 
@@ -143,6 +133,7 @@ public class AthleteFragment extends Fragment {
         floatingActionDelete.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                deleteAllBtn.setVisibility(View.VISIBLE);
                 LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
                 while (!temp.isEmpty()) {
                     ((CheckBox) temp.poll().getChildAt(5)).setVisibility(View.VISIBLE);
@@ -152,45 +143,56 @@ public class AthleteFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-
+                        materialDesignFAM.close(true);
                         LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
 
-                        int counter=1;
+
                         while (!temp.isEmpty()) {
                             ConstraintLayout element=(temp.pollFirst());
                             CheckBox checkBox=(CheckBox)element.getChildAt(5);
-
                             TextView hiddenId=(TextView)element.getChildAt(4);
                             if(checkBox.isChecked()){
                                 System.out.println();
 
                                 for(SportAndAthlete ath: athleteList){
                                     if(ath.getAthlete().getId()==Integer.parseInt(hiddenId.getText().toString())){
-                                        System.out.println(counter);
+
                                         roomdb.deleteAthlete(ath.getAthlete());
                                         checkBox.setChecked(false);
-                                        contentArea.removeViewAt(counter);
+                                        contentArea.removeView(element);
 
                                         break;
-
                                     }
                                 }
-
                             }
-                        counter++;
                         }
+                        handleFAM();
                     }
                 });
             }
         });
     }
+    public void handleFAM(){
+        if (materialDesignFAM.isOpened()) {
+            LinkedList<ConstraintLayout> temp = (LinkedList<ConstraintLayout>) allPreviews.clone();
+            while (!temp.isEmpty()) {
+                ((CheckBox) temp.poll().getChildAt(5)).setVisibility(View.INVISIBLE);
+            }
+            materialDesignFAM.close(true);
+            deleteAllBtn.setVisibility(View.INVISIBLE);
+        } else{
+            materialDesignFAM.open(true);
 
+        }
+
+    }
     @Override
     public void onResume() {
         super.onResume();
         materialDesignFAM.showMenu(true);
         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "resumed", Toast.LENGTH_SHORT);
-        toast.show();
+
+
     }
 
     @Override

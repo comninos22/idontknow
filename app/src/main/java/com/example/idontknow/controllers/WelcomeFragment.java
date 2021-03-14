@@ -57,10 +57,7 @@ public class WelcomeFragment extends Fragment {
         sportDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getSportDAO();
 
         create=  v.findViewById(R.id.createBtn);
-        createSport=v.findViewById(R.id.createSport);
-        selectAll = v.findViewById(R.id.selectAll);
-        firebtnCreate = v.findViewById(R.id.saveToFire);
-        selectFromFirebaseBtn=v.findViewById(R.id.getDataFromFirebase);
+
 
         create.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -96,37 +93,7 @@ public class WelcomeFragment extends Fragment {
             }
         });
 
-        firebtnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-        selectFromFirebaseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                System.out.println("asd");
-                getMatches();
-            }
-        });
-
-        createSport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Sport sport = new Sport(1,"ragby","s","solokariera");
-                Sport sport = new Sport("ragby","s","solokariera");
-                makeSport(sport);
-            }
-        });
-
-        selectAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<SportAndAthlete> all = athleteDAO.getAthletesWithSport();
-                System.out.println(Arrays.toString(all.toArray()));
-            }
-        });
 
         // Inflate the layout for this fragment
         return v;

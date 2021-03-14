@@ -17,6 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectImage" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="246dp"
+        android:layout_height="42dp"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/selectImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countryField" />
+
     <EditText
         android:id="@+id/cityOfOriginField"
         android:layout_width="wrap_content"
@@ -24,11 +35,15 @@
         android:ems="10"
         android:hint="City of origin"
         android:inputType="textPersonName"
+        android:textColorHighlight="#B2DFDB"
+        android:textColorLink="#B2EBF2"
+        android:textCursorDrawable="@color/teal_700"
+        android:theme="@style/Theme.Idontknow"
         app:layout_constraintBottom_toTopOf="@+id/countryField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameField" />
+        app:layout_constraintTop_toBottomOf="@+id/dateField" />
 
     <EditText
         android:id="@+id/countryField"
@@ -37,7 +52,11 @@
         android:ems="10"
         android:hint="Country"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/dateField"
+        android:textColorHighlight="#B2DFDB"
+        android:textColorLink="#B2EBF2"
+        android:textCursorDrawable="@color/teal_700"
+        android:theme="@style/Theme.Idontknow"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,24 +69,48 @@
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/cityOfOriginField"
+        android:textColorHighlight="#B2DFDB"
+        android:textColorLink="#B2EBF2"
+        android:textCursorDrawable="@color/teal_700"
+        android:theme="@style/Theme.Idontknow"
+        app:layout_constraintBottom_toTopOf="@+id/dateField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstNameField" />
+        app:layout_constraintTop_toBottomOf="@+id/firstNameField" />
 
     <EditText
-        android:id="@+id/FirstNameField"
+        android:id="@+id/firstNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
+        android:textColorHighlight="#B2DFDB"
+        android:textColorLink="#B2EBF2"
+        android:textCursorDrawable="@color/teal_700"
         app:layout_constraintBottom_toTopOf="@+id/lastNameField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Date of birth"
+        android:inputType="date"
+        android:textColorHighlight="#B2DFDB"
+        android:textColorLink="#B2EBF2"
+        android:textCursorDrawable="@color/teal_700"
+        android:theme="@style/Theme.Idontknow"
+        app:layout_constraintBottom_toTopOf="@+id/cityOfOriginField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameField" />
 
     <Button
         android:id="@+id/selectImage"
@@ -78,19 +121,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateField" />
-
-    <EditText
-        android:id="@+id/dateField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Date of birth"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/selectImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countryField" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
