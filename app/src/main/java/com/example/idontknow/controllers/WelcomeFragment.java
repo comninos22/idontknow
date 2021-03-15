@@ -20,7 +20,6 @@ import com.example.idontknow.room.AthleteDAO;
 import com.example.idontknow.room.Connections;
 import com.example.idontknow.room.SoloMatch;
 import com.example.idontknow.room.Sport;
-import com.example.idontknow.room.SportAndAthlete;
 import com.example.idontknow.room.SportDAO;
 import com.example.idontknow.room.Team;
 import com.example.idontknow.room.TeamMatch;
@@ -33,11 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class WelcomeFragment extends Fragment {
     AthleteDAO athleteDAO;
@@ -56,7 +51,7 @@ public class WelcomeFragment extends Fragment {
         athleteDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getAthleteDAO();
         sportDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getSportDAO();
 
-        create=  v.findViewById(R.id.createBtn);
+        create=  v.findViewById(R.id.createTeamBtn);
 
 
         create.setOnClickListener(new View.OnClickListener() {

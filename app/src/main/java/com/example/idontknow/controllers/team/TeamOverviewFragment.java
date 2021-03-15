@@ -26,15 +26,17 @@ public class TeamOverviewFragment extends Fragment {
 
 
     // TODO: Rename and change types of parameters
+
     private int id;
-    private String firstName;
-    private String lastName;
-    private String cityOfOrigin;
+    private String teamName;
+    private String stadiumName;
+    private String headquarters;
     private String country;
-    private String dateOfBirth;
     private String sportName;
-    private String imgUrl;
+    private String established;
+    private String imgURL;
     private Button editButton;
+    private int sportId;
     public TeamOverviewFragment() {
         // Required empty public constructor
     }
@@ -46,14 +48,14 @@ public class TeamOverviewFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             id = getArguments().getInt("id");
-            firstName = getArguments().getString("firstName");
-            lastName = getArguments().getString("lastName");
-            cityOfOrigin = getArguments().getString("cityOfOrigin");
+            teamName = getArguments().getString("teamName");
+            stadiumName = getArguments().getString("stadiumName");
+            headquarters = getArguments().getString("headquarters");
             country = getArguments().getString("country");
-            dateOfBirth = getArguments().getString("dateOfBirth");
+            established = getArguments().getString("established");
             sportName = getArguments().getString("sportName");
-            imgUrl = getArguments().getString("imgUrl");
-
+            imgURL = getArguments().getString("imgURL");
+            sportId=getArguments().getInt("sportId");
         }
         System.out.println(sportName);
     }
@@ -68,20 +70,20 @@ public class TeamOverviewFragment extends Fragment {
         editButton=view.findViewById(R.id.athEditButton);
         ImageView img=view.findViewById(R.id.athleteImage);
         ImageHandler handler=new ImageHandler(getContext());
-        img.setImageBitmap(handler.loadImageFromStorage(imgUrl));
-        TextView firstNameField,lastNameField,cityOfOriginField,countryField,dateOfBirthField,sportNameField;
-        firstNameField=view.findViewById(R.id.athNameField);
-        lastNameField=view.findViewById(R.id.athLastNameField);
-        cityOfOriginField=view.findViewById(R.id.athCityOfOriginField);
+        img.setImageBitmap(handler.loadImageFromStorage(imgURL));
+        TextView teamNameField,stadiumNameField,headquartersField,countryField,establishedField,sportNameField;
+        teamNameField=view.findViewById(R.id.teamNameField);
+        stadiumNameField=view.findViewById(R.id.athLastNameField);
+        headquartersField=view.findViewById(R.id.athCityOfOriginField);
         countryField=view.findViewById(R.id.athCountryField);
-        dateOfBirthField=view.findViewById(R.id.athDateOfBirthField);
+        establishedField=view.findViewById(R.id.athDateOfBirthField);
         sportNameField=view.findViewById(R.id.athSportNameField);
 
-        firstNameField.setText("First name: "+firstName);
-        lastNameField.setText("Last name: "+lastName);
-        cityOfOriginField.setText("City: "+cityOfOrigin);
+        teamNameField.setText("First name: "+teamName);
+        stadiumNameField.setText("Stadium: "+stadiumName);
+        headquartersField.setText("Headquarters: "+headquarters);
         countryField.setText("Country: "+country);
-        dateOfBirthField.setText("Date of birth: "+dateOfBirth);
+        establishedField.setText("Established : "+established);
         sportNameField.setText("Sport: "+sportName);
 
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -89,17 +91,18 @@ public class TeamOverviewFragment extends Fragment {
             public void onClick(View v) {
                 Bundle argBundle=new Bundle();
                 argBundle.putInt("id",id);
-                argBundle.putString("firstName",firstName);
-                argBundle.putString("lastName",lastName);
-                argBundle.putString("cityOfOrigin",cityOfOrigin);
+                argBundle.putString("name",teamName);
+                argBundle.putString("headquarters",headquarters);
                 argBundle.putString("country",country);
-                argBundle.putString("dateOfBirth",dateOfBirth);
+                argBundle.putString("established",established);
+                argBundle.putString("imgUrl",imgURL);
                 argBundle.putString("sportName",sportName);
-                argBundle.putString("imgUrl",imgUrl);
-                CreateTeamFragment editAthlete=new CreateTeamFragment();
+                argBundle.putString("stadiumName",stadiumName);
+                argBundle.putInt("sportId",sportId);
+                CreateTeamFragment editTeam=new CreateTeamFragment();
 
-                editAthlete.setArguments(argBundle);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, editAthlete,"editAthlete").addToBackStack("editAthlete").commit();
+                editTeam.setArguments(argBundle);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, editTeam,"editAthlete").addToBackStack("editAthlete").commit();
             }
         });
     }

@@ -7,7 +7,7 @@
 
 
     <Button
-        android:id="@+id/createBtn"
+        android:id="@+id/createTeamBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="createAthelete"
@@ -15,21 +15,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectImage" />
+        app:layout_constraintTop_toBottomOf="@+id/selectTeamImage" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerTeam"
         android:layout_width="246dp"
         android:layout_height="42dp"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/selectImage"
+        app:layout_constraintBottom_toTopOf="@+id/selectTeamImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countryField" />
+        app:layout_constraintTop_toBottomOf="@+id/teamCountryField" />
 
     <EditText
-        android:id="@+id/cityOfOriginField"
+        android:id="@+id/teamHeadquartersField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -39,14 +39,14 @@
         android:textColorLink="#B2EBF2"
         android:textCursorDrawable="@color/teal_700"
         android:theme="@style/Theme.Idontknow"
-        app:layout_constraintBottom_toTopOf="@+id/countryField"
+        app:layout_constraintBottom_toTopOf="@+id/teamCountryField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateField" />
+        app:layout_constraintTop_toBottomOf="@+id/teamEstablishedField" />
 
     <EditText
-        android:id="@+id/countryField"
+        android:id="@+id/teamCountryField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -56,14 +56,14 @@
         android:textColorLink="#B2EBF2"
         android:textCursorDrawable="@color/teal_700"
         android:theme="@style/Theme.Idontknow"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerTeam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityOfOriginField" />
+        app:layout_constraintTop_toBottomOf="@+id/teamHeadquartersField" />
 
     <EditText
-        android:id="@+id/lastNameField"
+        android:id="@+id/stadiumNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -73,14 +73,14 @@
         android:textColorLink="#B2EBF2"
         android:textCursorDrawable="@color/teal_700"
         android:theme="@style/Theme.Idontknow"
-        app:layout_constraintBottom_toTopOf="@+id/dateField"
+        app:layout_constraintBottom_toTopOf="@+id/teamEstablishedField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameField" />
+        app:layout_constraintTop_toBottomOf="@+id/teamNameField" />
 
     <EditText
-        android:id="@+id/firstNameField"
+        android:id="@+id/teamNameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -89,14 +89,14 @@
         android:textColorHighlight="#B2DFDB"
         android:textColorLink="#B2EBF2"
         android:textCursorDrawable="@color/teal_700"
-        app:layout_constraintBottom_toTopOf="@+id/lastNameField"
+        app:layout_constraintBottom_toTopOf="@+id/stadiumNameField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/dateField"
+        android:id="@+id/teamEstablishedField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -106,21 +106,21 @@
         android:textColorLink="#B2EBF2"
         android:textCursorDrawable="@color/teal_700"
         android:theme="@style/Theme.Idontknow"
-        app:layout_constraintBottom_toTopOf="@+id/cityOfOriginField"
+        app:layout_constraintBottom_toTopOf="@+id/teamHeadquartersField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameField" />
+        app:layout_constraintTop_toBottomOf="@+id/stadiumNameField" />
 
     <Button
-        android:id="@+id/selectImage"
+        android:id="@+id/selectTeamImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="select image from gallery"
-        app:layout_constraintBottom_toTopOf="@+id/createBtn"
+        app:layout_constraintBottom_toTopOf="@+id/createTeamBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTeam" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

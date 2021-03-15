@@ -14,8 +14,6 @@ import android.widget.TextView;
 import com.example.idontknow.R;
 import com.example.idontknow.utils.ImageHandler;
 
-import org.w3c.dom.Text;
-
 /**
  * A simple {@link Fragment} subclass.
 
@@ -73,7 +71,7 @@ public class AthleteOverviewFragment extends Fragment {
         ImageHandler handler=new ImageHandler(getContext());
         img.setImageBitmap(handler.loadImageFromStorage(imgUrl));
         TextView firstNameField,lastNameField,cityOfOriginField,countryField,dateOfBirthField,sportNameField;
-        firstNameField=view.findViewById(R.id.athNameField);
+        firstNameField=view.findViewById(R.id.teamNameField);
         lastNameField=view.findViewById(R.id.athLastNameField);
         cityOfOriginField=view.findViewById(R.id.athCityOfOriginField);
         countryField=view.findViewById(R.id.athCountryField);

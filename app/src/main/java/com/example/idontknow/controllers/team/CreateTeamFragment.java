@@ -19,10 +19,9 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.idontknow.R;
-import com.example.idontknow.controllers.athlete.AthleteFragment;
-import com.example.idontknow.room.Athlete;
 import com.example.idontknow.room.Connections;
 import com.example.idontknow.room.Sport;
+import com.example.idontknow.room.Team;
 import com.example.idontknow.utils.ImageHandler;
 
 import java.util.LinkedList;
@@ -31,8 +30,8 @@ import java.util.List;
 import static android.app.Activity.RESULT_OK;
 
 public class CreateTeamFragment extends Fragment {
-    Button createAthlete,selectImageFromGallery;
-    EditText cityOfOriginField,countryField,firstNameField,lastNameField,dateField;
+    Button createTeam,selectImageFromGallery;
+    EditText teamNameField,headquartersField,countryField,sportNameField,establishedField,stadiumField;
     String localImagePath;
     Connections roomdb;
     Spinner spinner;
@@ -41,13 +40,13 @@ public class CreateTeamFragment extends Fragment {
 
 
     private int id;
-    private String firstName;
-    private String lastName;
-    private String cityOfOrigin;
+    private String teamName;
+    private String stadiumName;
+    private String headquarters;
     private String country;
-    private String dateOfBirth;
     private String sportName;
-    private String imgUrl;
+    private String established;
+    private String imgURL;
     private Button editButton;
     private int sportId;
 
@@ -72,29 +71,30 @@ public class CreateTeamFragment extends Fragment {
         Sport sport=new Sport("wtf","wtf","wtf");
         roomdb.makeSport(sport);
 // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.create_athlete, container, false);
+        return inflater.inflate(R.layout.create_team, container, false);
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        createAthlete=view.findViewById(R.id.createBtn);
-        firstNameField=view.findViewById(R.id.firstNameField);
-        lastNameField=view.findViewById(R.id.lastNameField);
-        dateField=view.findViewById(R.id.dateField);
-        cityOfOriginField=view.findViewById(R.id.cityOfOriginField);
-        countryField=view.findViewById(R.id.countryField);
-        selectImageFromGallery=view.findViewById(R.id.selectImage);
-        spinner=view.findViewById(R.id.spinner);
+        createTeam=view.findViewById(R.id.createTeamBtn);
+        teamNameField=view.findViewById(R.id.teamNameField);
+        stadiumField=view.findViewById(R.id.stadiumNameField);
+        establishedField=view.findViewById(R.id.teamEstablishedField);
+        headquartersField=view.findViewById(R.id.teamHeadquartersField);
+        countryField=view.findViewById(R.id.teamCountryField);
+        selectImageFromGallery=view.findViewById(R.id.selectTeamImage);
+        spinner=view.findViewById(R.id.spinnerTeam);
         if (getArguments() != null) {
             id = getArguments().getInt("id");
-            firstNameField.setText(getArguments().getString("firstName"));
-            lastNameField.setText(getArguments().getString("lastName"));
-            cityOfOriginField.setText( getArguments().getString("cityOfOrigin"));
+            stadiumField.setText(getArguments().getString("stadiumName"));
+            teamNameField.setText(getArguments().getString("name"));
+            headquartersField.setText(getArguments().getString("headquarters"));
+            establishedField.setText( getArguments().getString("established"));
             countryField.setText( getArguments().getString("country"));
-            dateField.setText( getArguments().getString("dateOfBirth"));
+            sportNameField.setText( getArguments().getString("sportName"));
             selectedSport=new Sport();
             selectedSport.setSid(getArguments().getInt("sportId")) ;
-            imgUrl = getArguments().getString("imgUrl");
-            ((Button)view.findViewById(R.id.createBtn)).setText("Edit Athlete");
+            imgURL = getArguments().getString("imgUrl");
+            ((Button)view.findViewById(R.id.createTeamBtn)).setText("Edit Team");
         }
         List<Sport> sportsList=roomdb.getSports();
         List<String> stringList=new LinkedList();
@@ -122,37 +122,37 @@ public class CreateTeamFragment extends Fragment {
                 startActivityForResult(Intent.createChooser(intent,"Select Picture"), 9000);
             }
         });
-        createAthlete.setOnClickListener(new View.OnClickListener() {
+        createTeam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(getArguments()==null){
-                    Athlete ath=new Athlete(firstNameField.getText().toString(),
-                            lastNameField.getText().toString(),
-                            cityOfOriginField.getText().toString(),
+                    Team team=new Team(teamNameField.getText().toString(),
+                            stadiumField.getText().toString(),
+                            headquartersField.getText().toString(),
                             countryField.getText().toString(),
                             selectedSport.getSid(),
-                            dateField.getText().toString()
+                            establishedField.getText().toString()
                             ,localImagePath);
                     System.out.println(getArguments());
 
-                    System.out.println(ath.toString());
-                    roomdb.makeAthlete(ath);
+                    System.out.println(team.toString());
+                    roomdb.makeTeam(team);
                 }else{
                     if(localImagePath==null){
-                        localImagePath=imgUrl;
+                        localImagePath=imgURL;
                     }
-                    Athlete ath=new Athlete(id,firstNameField.getText().toString(),
-                            lastNameField.getText().toString(),
-                            cityOfOriginField.getText().toString(),
+                    Team team=new Team(teamNameField.getText().toString(),
+                            stadiumField.getText().toString(),
+                            headquartersField.getText().toString(),
                             countryField.getText().toString(),
                             selectedSport.getSid(),
-                            dateField.getText().toString()
+                            establishedField.getText().toString()
                             ,localImagePath);
-                    System.out.println(ath);
-                    roomdb.updateAthlete(ath);
+                    System.out.println(team);
+                    roomdb.updateTeam(team);
                 }
 
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new AthleteFragment(),"AthleteFragment").addToBackStack("AthleteFragment").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new TeamFragment(),"TeamFragment").addToBackStack("TeamFragment").commit();
 
             }
         });

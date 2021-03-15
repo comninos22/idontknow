@@ -22,6 +22,7 @@ import com.example.idontknow.controllers.athlete.AthleteOverviewFragment;
 import com.example.idontknow.controllers.athlete.CreateAthleteFragment;
 import com.example.idontknow.room.Connections;
 import com.example.idontknow.room.SportAndAthlete;
+import com.example.idontknow.room.SportAndTeam;
 import com.example.idontknow.utils.ImageHandler;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -35,14 +36,14 @@ public class TeamFragment extends Fragment {
     FloatingActionButton floatingActionInsert, floatingActionDelete;
     Button deleteAllBtn;
     LinkedList<ConstraintLayout> allPreviews = new LinkedList<ConstraintLayout>();
-    List<SportAndAthlete> athleteList;
+    List<SportAndTeam> teamList;
     LinearLayout contentArea;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         roomdb = Connections.getInstance(getActivity().getApplicationContext());
-        View v = inflater.inflate(R.layout.athlete_fragment_view, container, false);
+        View v = inflater.inflate(R.layout.team_fragment_view, container, false);
 
 // Inflate the layout for this fragment
         return v;
@@ -55,7 +56,7 @@ public class TeamFragment extends Fragment {
 
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-        athleteList = roomdb.getAthletesWithSport();
+        teamList = roomdb.getTeamsWithSport();
         contentArea = view.findViewById(R.id.flexView2);
         deleteAllBtn=getActivity().findViewById(R.id.deleteAllButton);
         floatingBullcrap();
@@ -66,42 +67,42 @@ public class TeamFragment extends Fragment {
 // add as second child, therefore pass index 1 (0,1,...)
         contentArea.removeAllViews();
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        for (SportAndAthlete ath : athleteList) {
+        for (SportAndTeam team : teamList) {
             int baseId = 2000000;
-            ConstraintLayout newView = (ConstraintLayout) layoutInflater.inflate(R.layout.athlete_preview, (ViewGroup) view, false);
+            ConstraintLayout newView = (ConstraintLayout) layoutInflater.inflate( R.layout.team_preview, (ViewGroup) view, false);
             ImageHandler handler = new ImageHandler(getContext());
 
             ImageView v = (ImageView) newView.getChildAt(0);
             //Glide.with(this).load("https://static2.car.gr/13402009_0_z.jpg").into(v);
-            ((ImageView) newView.getChildAt(0)).setImageBitmap(handler.loadImageFromStorage(ath.getAthlete().getImgUrl()));
+            ((ImageView) newView.getChildAt(0)).setImageBitmap(handler.loadImageFromStorage(team.getTeam().getImgURL()));
 
 
 //pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg
-            ((TextView) newView.getChildAt(1)).setText(ath.getAthlete().getFirstName() + " " + ath.getAthlete().getLastName());
+            ((TextView) newView.getChildAt(1)).setText(team.getTeam().getTeamName());
 
-            ((TextView) newView.getChildAt(2)).setText(ath.getAthlete().getCountry());
+            ((TextView) newView.getChildAt(2)).setText(team.getTeam().getCountry());
 
-            ((TextView) newView.getChildAt(3)).setText(ath.getSport().getName());
-            ((TextView) newView.getChildAt(4)).setText(Integer.toString(ath.getAthlete().getId()));
+            ((TextView) newView.getChildAt(3)).setText(team.getSport().getName());
+            ((TextView) newView.getChildAt(4)).setText(Integer.toString(team.getTeam().getId()));
 
             contentArea.addView(newView, 0);
             allPreviews.add(newView);
             newView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AthleteOverviewFragment overview=new AthleteOverviewFragment();
+                    TeamOverviewFragment overview=new TeamOverviewFragment();
                     Bundle argBundle=new Bundle();
-                    argBundle.putInt("id",ath.getAthlete().getId());
-                    argBundle.putString("firstName",ath.getAthlete().getFirstName());
-                    argBundle.putString("lastName",ath.getAthlete().getLastName());
-                    argBundle.putString("cityOfOrigin",ath.getAthlete().getCityOfOrigin());
-                    argBundle.putString("country",ath.getAthlete().getCountry());
-                    argBundle.putString("dateOfBirth",ath.getAthlete().getDateOfBirth());
-                    argBundle.putString("imgUrl",ath.getAthlete().getImgUrl());
-                    argBundle.putString("sportName",ath.getSport().getName());
-                    argBundle.putInt("sportId",ath.getSport().getSid());
+                    argBundle.putInt("id",team.getTeam().getId());
+                    argBundle.putString("name",team.getTeam().getTeamName());
+                    argBundle.putString("headquarters",team.getTeam().getHeadquarters());
+                    argBundle.putString("country",team.getTeam().getCountry());
+                    argBundle.putString("established",team.getTeam().getEstablished());
+                    argBundle.putString("imgUrl",team.getTeam().getImgURL());
+                    argBundle.putString("sportName",team.getSport().getName());
+                    argBundle.putString("stadiumName",team.getTeam().getStadiumName());
+                    argBundle.putInt("sportId",team.getSport().getSid());
                     overview.setArguments(argBundle);
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, overview,"overviewAthlete").addToBackStack("overviewAthlete").commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, overview,"overviewTeam").addToBackStack("overviewTeam").commit();
 
                 }
             });
@@ -116,8 +117,8 @@ public class TeamFragment extends Fragment {
         materialDesignFAM = (FloatingActionMenu) getActivity().findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionInsert = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_insert);
         floatingActionDelete = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_delete);
-        floatingActionDelete.setLabelText("Delete athletes");
-        floatingActionInsert.setLabelText("Create an athlete");
+        floatingActionDelete.setLabelText("Delete teams");
+        floatingActionInsert.setLabelText("Create a team");
 
 
 
@@ -126,16 +127,14 @@ public class TeamFragment extends Fragment {
         materialDesignFAM.setOnMenuButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 handleFAM();
-
                 System.out.println("ahahahahah");
             }
         });
         floatingActionInsert.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new CreateAthleteFragment(),"CreateAthleteFragment").addToBackStack("CreateAthleteFragment").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new CreateTeamFragment(),"CreateTeamFragment").addToBackStack("CreateTeamFragment").commit();
             }
         });
 
@@ -164,10 +163,10 @@ public class TeamFragment extends Fragment {
                             if(checkBox.isChecked()){
                                 System.out.println();
 
-                                for(SportAndAthlete ath: athleteList){
-                                    if(ath.getAthlete().getId()==Integer.parseInt(hiddenId.getText().toString())){
+                                for(SportAndTeam ath: teamList){
+                                    if(ath.getTeam().getId()==Integer.parseInt(hiddenId.getText().toString())){
 
-                                        roomdb.deleteAthlete(ath.getAthlete());
+                                        roomdb.deleteTeam(ath.getTeam());
                                         checkBox.setChecked(false);
                                         contentArea.removeView(element);
 

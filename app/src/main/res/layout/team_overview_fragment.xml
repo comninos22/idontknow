@@ -18,7 +18,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/athEditButton"
+                android:id="@+id/teamEditButton"
                 android:layout_width="283dp"
                 android:layout_height="42dp"
                 android:text="Edit"
@@ -32,11 +32,11 @@
                 android:layout_width="365dp"
                 android:layout_height="233dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/athMapView"
+                app:layout_constraintBottom_toTopOf="@+id/teamMapView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/athleteImage">
+                app:layout_constraintTop_toBottomOf="@+id/teamImage">
 
                 <TextView
                     android:id="@+id/teamNameField"
@@ -46,35 +46,35 @@
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/athLastNameField"
+                    android:id="@+id/teamStadiumField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/athCityOfOriginField"
+                    android:id="@+id/teamHeadquartersField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/athCountryField"
+                    android:id="@+id/teamCountryField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/athDateOfBirthField"
+                    android:id="@+id/teamEstablishedField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/athSportNameField"
+                    android:id="@+id/teamSportNameField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -82,7 +82,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/athleteImage"
+                android:id="@+id/teamImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -93,10 +93,10 @@
                 tools:src="@tools:sample/avatars" />
 
             <com.google.android.gms.maps.MapView
-                android:id="@+id/athMapView"
+                android:id="@+id/teamMapView"
                 android:layout_width="347dp"
                 android:layout_height="241dp"
-                app:layout_constraintBottom_toTopOf="@+id/athEditButton"
+                app:layout_constraintBottom_toTopOf="@+id/teamEditButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

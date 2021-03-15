@@ -2,22 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/athleteContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="#CBCBCB">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="59dp">
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="226dp">
 
         <LinearLayout
             android:id="@+id/flexView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+
+        </LinearLayout>
     </ScrollView>
     <include layout="@layout/floating_action_menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
