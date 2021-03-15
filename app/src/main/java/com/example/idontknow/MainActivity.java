@@ -8,15 +8,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.idontknow.controllers.AthleteFragment;
-import com.example.idontknow.controllers.TeamFragment;
-import com.example.idontknow.controllers.SportFragment;
+import com.example.idontknow.controllers.athlete.AthleteFragment;
+import com.example.idontknow.controllers.sport.SportFragment;
 import com.example.idontknow.controllers.WelcomeFragment;
+import com.example.idontknow.controllers.team.TeamFragment;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 

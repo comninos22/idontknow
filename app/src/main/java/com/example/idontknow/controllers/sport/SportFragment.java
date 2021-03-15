@@ -1,4 +1,4 @@
-package com.example.idontknow.controllers;
+package com.example.idontknow.controllers.sport;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,7 +40,6 @@ public class SportFragment extends Fragment {
     public void floatingBullcrap(){
         materialDesignFAM = (FloatingActionMenu) getActivity().findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionInsert = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_insert);
-        floatingActionUpdate = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_update);
         floatingActionDelete = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_delete);
 
 

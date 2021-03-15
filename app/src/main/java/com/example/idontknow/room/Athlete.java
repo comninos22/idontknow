@@ -19,7 +19,7 @@ import java.util.Date;
                 onDelete = ForeignKey.CASCADE)
         })
 
-public class Athlete  {
+public class Athlete implements Serializable {
 
 
     @NonNull

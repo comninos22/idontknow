@@ -1,9 +1,8 @@
-package com.example.idontknow.controllers;
+package com.example.idontknow.controllers.team;
 
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,9 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
 import com.example.idontknow.R;
-import com.example.idontknow.room.Athlete;
+import com.example.idontknow.controllers.athlete.AthleteOverviewFragment;
+import com.example.idontknow.controllers.athlete.CreateAthleteFragment;
 import com.example.idontknow.room.Connections;
 import com.example.idontknow.room.SportAndAthlete;
 import com.example.idontknow.utils.ImageHandler;
@@ -30,10 +29,10 @@ import com.github.clans.fab.FloatingActionMenu;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AthleteFragment extends Fragment {
+public class TeamFragment extends Fragment {
     Connections roomdb;
     FloatingActionMenu materialDesignFAM;
-    FloatingActionButton floatingActionInsert, floatingActionUpdate, floatingActionDelete;
+    FloatingActionButton floatingActionInsert, floatingActionDelete;
     Button deleteAllBtn;
     LinkedList<ConstraintLayout> allPreviews = new LinkedList<ConstraintLayout>();
     List<SportAndAthlete> athleteList;
@@ -87,7 +86,25 @@ public class AthleteFragment extends Fragment {
 
             contentArea.addView(newView, 0);
             allPreviews.add(newView);
+            newView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AthleteOverviewFragment overview=new AthleteOverviewFragment();
+                    Bundle argBundle=new Bundle();
+                    argBundle.putInt("id",ath.getAthlete().getId());
+                    argBundle.putString("firstName",ath.getAthlete().getFirstName());
+                    argBundle.putString("lastName",ath.getAthlete().getLastName());
+                    argBundle.putString("cityOfOrigin",ath.getAthlete().getCityOfOrigin());
+                    argBundle.putString("country",ath.getAthlete().getCountry());
+                    argBundle.putString("dateOfBirth",ath.getAthlete().getDateOfBirth());
+                    argBundle.putString("imgUrl",ath.getAthlete().getImgUrl());
+                    argBundle.putString("sportName",ath.getSport().getName());
+                    argBundle.putInt("sportId",ath.getSport().getSid());
+                    overview.setArguments(argBundle);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, overview,"overviewAthlete").addToBackStack("overviewAthlete").commit();
 
+                }
+            });
 
         }
 
@@ -98,11 +115,9 @@ public class AthleteFragment extends Fragment {
 
         materialDesignFAM = (FloatingActionMenu) getActivity().findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionInsert = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_insert);
-        floatingActionUpdate = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_update);
         floatingActionDelete = (FloatingActionButton) getActivity().findViewById(R.id.material_design_floating_action_menu_delete);
         floatingActionDelete.setLabelText("Delete athletes");
         floatingActionInsert.setLabelText("Create an athlete");
-        floatingActionUpdate.setLabelText("Edit an athlete");
 
 
 
@@ -124,12 +139,7 @@ public class AthleteFragment extends Fragment {
             }
         });
 
-        floatingActionUpdate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //TODO something when floating action menu second item clicked
 
-            }
-        });
         floatingActionDelete.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {

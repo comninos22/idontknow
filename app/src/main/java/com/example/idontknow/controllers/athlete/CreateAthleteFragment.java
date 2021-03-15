@@ -1,9 +1,8 @@
-package com.example.idontknow.controllers;
+package com.example.idontknow.controllers.athlete;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,19 +13,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.idontknow.R;
+import com.example.idontknow.controllers.athlete.AthleteFragment;
 import com.example.idontknow.room.Athlete;
 import com.example.idontknow.room.Connections;
 import com.example.idontknow.room.Sport;
 import com.example.idontknow.utils.ImageHandler;
-import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -41,10 +38,39 @@ public class CreateAthleteFragment extends Fragment {
     Spinner spinner;
     Sport selectedSport;
     private static final int REQUEST_WRITE_PERMISSION = 786;
+
+
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String cityOfOrigin;
+    private String country;
+    private String dateOfBirth;
+    private String sportName;
+    private String imgUrl;
+    private Button editButton;
+    private int sportId;
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        System.out.println(sportName);
+    }
+
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         roomdb=Connections.getInstance(getContext());
+        Sport sport=new Sport("wtf","wtf","wtf");
+        roomdb.makeSport(sport);
 // Inflate the layout for this fragment
         return inflater.inflate(R.layout.create_athlete, container, false);
     }
@@ -58,6 +84,18 @@ public class CreateAthleteFragment extends Fragment {
         countryField=view.findViewById(R.id.countryField);
         selectImageFromGallery=view.findViewById(R.id.selectImage);
         spinner=view.findViewById(R.id.spinner);
+        if (getArguments() != null) {
+            id = getArguments().getInt("id");
+            firstNameField.setText(getArguments().getString("firstName"));
+            lastNameField.setText(getArguments().getString("lastName"));
+            cityOfOriginField.setText( getArguments().getString("cityOfOrigin"));
+            countryField.setText( getArguments().getString("country"));
+            dateField.setText( getArguments().getString("dateOfBirth"));
+            selectedSport=new Sport();
+            selectedSport.setSid(getArguments().getInt("sportId")) ;
+            imgUrl = getArguments().getString("imgUrl");
+            ((Button)view.findViewById(R.id.createBtn)).setText("Edit Athlete");
+        }
         List<Sport> sportsList=roomdb.getSports();
         List<String> stringList=new LinkedList();
         for(Sport s:sportsList){
@@ -87,16 +125,33 @@ public class CreateAthleteFragment extends Fragment {
         createAthlete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(getArguments()==null){
+                    Athlete ath=new Athlete(firstNameField.getText().toString(),
+                            lastNameField.getText().toString(),
+                            cityOfOriginField.getText().toString(),
+                            countryField.getText().toString(),
+                            selectedSport.getSid(),
+                            dateField.getText().toString()
+                            ,localImagePath);
+                    System.out.println(getArguments());
 
-                Athlete ath=new Athlete(firstNameField.getText().toString(),
-                        lastNameField.getText().toString(),
-                        cityOfOriginField.getText().toString(),
-                        countryField.getText().toString(),
-                        selectedSport.getSid(),
-                        dateField.getText().toString()
-                        ,localImagePath);
-                System.out.println(ath.toString());
-                roomdb.makeAthlete(ath);
+                    System.out.println(ath.toString());
+                    roomdb.makeAthlete(ath);
+                }else{
+                    if(localImagePath==null){
+                        localImagePath=imgUrl;
+                    }
+                    Athlete ath=new Athlete(id,firstNameField.getText().toString(),
+                            lastNameField.getText().toString(),
+                            cityOfOriginField.getText().toString(),
+                            countryField.getText().toString(),
+                            selectedSport.getSid(),
+                            dateField.getText().toString()
+                            ,localImagePath);
+                    System.out.println(ath);
+                    roomdb.updateAthlete(ath);
+                }
+
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new AthleteFragment(),"AthleteFragment").addToBackStack("AthleteFragment").commit();
 
             }
@@ -127,6 +182,7 @@ public class CreateAthleteFragment extends Fragment {
             ImageHandler handler=new ImageHandler(getContext());
             ;
             //localImagePath=handler.saveToInternalStorage();
+
             localImagePath=handler.saveToInternalStorage(handler.loadImageFromStorage(picturePath));
 
         }
