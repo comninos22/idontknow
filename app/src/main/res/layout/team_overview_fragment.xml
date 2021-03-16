@@ -53,7 +53,7 @@
                     android:text="TextView" />
 
                 <TextView
-                    android:id="@+id/teamHeadquartersField"
+                    android:id="@+id/sportName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"

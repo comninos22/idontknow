@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/sportName"
+                android:layout_width="200dp"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:hint="Sport name"
+                android:inputType="textPersonName"
+                android:textColorHighlight="#B2DFDB"
+                android:textColorLink="#B2EBF2"
+                android:textCursorDrawable="@color/teal_700"
+                android:theme="@style/Theme.Idontknow" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginTop="40dp"
+                android:text="Gender" />
+
+            <RadioGroup
+                android:id="@+id/sportType"
+                android:layout_width="195dp"
+                android:layout_height="106dp"
+                android:layout_marginBottom="80dp">
+
+                <RadioButton
+                    android:id="@+id/soloOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Solo" />
+
+                <RadioButton
+                    android:id="@+id/teamOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Team" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type" />
+
+            <RadioGroup
+                android:id="@+id/genderType"
+                android:layout_width="196dp"
+                android:layout_height="110dp"
+                android:layout_marginBottom="50dp">
+
+                <RadioButton
+                    android:id="@+id/maleOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/femaleOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/createSportBtn"
+                android:layout_width="195dp"
+                android:layout_height="56dp"
+                android:text="createAthelete" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

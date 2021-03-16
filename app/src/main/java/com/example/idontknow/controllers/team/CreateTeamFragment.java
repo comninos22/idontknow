@@ -75,11 +75,11 @@ public class CreateTeamFragment extends Fragment {
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        createTeam=view.findViewById(R.id.createTeamBtn);
+        createTeam=view.findViewById(R.id.createSportBtn);
         teamNameField=view.findViewById(R.id.teamNameField);
         stadiumField=view.findViewById(R.id.stadiumNameField);
         establishedField=view.findViewById(R.id.teamEstablishedField);
-        headquartersField=view.findViewById(R.id.teamHeadquartersField);
+        headquartersField=view.findViewById(R.id.sportName);
         countryField=view.findViewById(R.id.teamCountryField);
         selectImageFromGallery=view.findViewById(R.id.selectTeamImage);
         spinner=view.findViewById(R.id.spinnerTeam);
@@ -94,7 +94,7 @@ public class CreateTeamFragment extends Fragment {
             selectedSport=new Sport();
             selectedSport.setSid(getArguments().getInt("sportId")) ;
             imgURL = getArguments().getString("imgUrl");
-            ((Button)view.findViewById(R.id.createTeamBtn)).setText("Edit Team");
+            ((Button)view.findViewById(R.id.createSportBtn)).setText("Edit Team");
         }
         List<Sport> sportsList=roomdb.getSports();
         List<String> stringList=new LinkedList();

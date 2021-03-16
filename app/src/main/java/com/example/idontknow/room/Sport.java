@@ -27,7 +27,7 @@ public class Sport {
 
 
     @Ignore
-    public Sport(int id, String name, String gender, String type) {
+    public Sport(int sid, String name, String gender, String type) {
         this.sid = sid;
         this.name = name;
         this.gender = gender;

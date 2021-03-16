@@ -51,7 +51,7 @@ public class WelcomeFragment extends Fragment {
         athleteDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getAthleteDAO();
         sportDAO= Connections.getInstance(getActivity().getApplicationContext()).getDatabase().getSportDAO();
 
-        create=  v.findViewById(R.id.createTeamBtn);
+        create=  v.findViewById(R.id.createSportBtn);
 
 
         create.setOnClickListener(new View.OnClickListener() {

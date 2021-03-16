@@ -68,7 +68,6 @@ public class TeamFragment extends Fragment {
         contentArea.removeAllViews();
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         for (SportAndTeam team : teamList) {
-            int baseId = 2000000;
             ConstraintLayout newView = (ConstraintLayout) layoutInflater.inflate( R.layout.team_preview, (ViewGroup) view, false);
             ImageHandler handler = new ImageHandler(getContext());
 

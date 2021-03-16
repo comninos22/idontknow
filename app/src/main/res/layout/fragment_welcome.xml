@@ -7,7 +7,7 @@
 
 
     <Button
-        android:id="@+id/createTeamBtn"
+        android:id="@+id/createSportBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="createAthelete"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selectTeamImage" />
 
     <EditText
-        android:id="@+id/teamHeadquartersField"
+        android:id="@+id/sportName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamHeadquartersField" />
+        app:layout_constraintTop_toBottomOf="@+id/sportName" />
 
     <EditText
         android:id="@+id/stadiumNameField"
@@ -50,7 +50,7 @@
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/teamHeadquartersField"
+        app:layout_constraintBottom_toTopOf="@+id/sportName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="select image from gallery"
-        app:layout_constraintBottom_toTopOf="@+id/createTeamBtn"
+        app:layout_constraintBottom_toTopOf="@+id/createSportBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
