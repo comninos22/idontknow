@@ -57,8 +57,9 @@ public class CreateSportFragment extends Fragment {
         createSport=view.findViewById(R.id.createSportBtn);
         genderGroup=view.findViewById(R.id.genderType);
         typeGroup=view.findViewById(R.id.sportType);
-        id=getArguments().getInt("id");
+
         if(getArguments()!=null){
+            id=getArguments().getInt("id");
             switch(getArguments().getString("gender")){
 
                 case "Male":

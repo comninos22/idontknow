@@ -17,90 +17,80 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/athEditButton"
-                android:layout_width="283dp"
-                android:layout_height="42dp"
-                android:text="Edit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/athMapView" />
-
             <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="365dp"
-                android:layout_height="233dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/athMapView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/athleteImage">
-
-                <TextView
-                    android:id="@+id/teamNameField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/athLastNameField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/athCityOfOriginField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/athCountryField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/athDateOfBirthField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/athSportNameField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView" />
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/athleteImage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/athMapView"
-                android:layout_width="347dp"
-                android:layout_height="241dp"
-                app:layout_constraintBottom_toTopOf="@+id/athEditButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+                <ImageView
+                    android:id="@+id/athleteImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:src="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="365dp"
+                    android:layout_height="233dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/teamNameField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/athLastNameField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/athCityOfOriginField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/athCountryField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/athDateOfBirthField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/athSportNameField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/athMapView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="159dp"
+                    android:layout_margin="30dp" />
+
+                <Button
+                    android:id="@+id/athEditButton"
+                    android:layout_width="283dp"
+                    android:layout_height="42dp"
+                    android:text="Edit" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

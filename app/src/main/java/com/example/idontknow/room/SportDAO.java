@@ -22,6 +22,10 @@ public interface SportDAO {
     @Query("select * from Sport order by name")
     List<Sport> getSports();
 
+    @Query("select * from Sport where gender=:gender and type=:type order by name")
+    List<Sport> getSportsByGender(String gender,String type);
+
+
     @Query("select * from Sport where sid=:id")
     Sport getSportById(int id);
 

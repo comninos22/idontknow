@@ -114,6 +114,8 @@ public class TeamMatchFragment extends Fragment {
                         array2[i]=(int)objects2[i];
                     }
                     argBundle.putIntArray("performance2",array2);
+                    argBundle.putBoolean("draw",teamMatches.getPerformance().isDraw());
+                    overview.setArguments(argBundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flContent, overview, "overviewAthlete").addToBackStack("overviewAthlete").commit();
 
                 }

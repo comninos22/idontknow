@@ -12,6 +12,7 @@ import java.util.List;
 
 @Dao
 public interface  AthleteDAO {
+
     @Insert
     void insert(Athlete athlete);
 
@@ -26,6 +27,12 @@ public interface  AthleteDAO {
 
     @Query("select * from Athlete where aid=:id")
     Athlete getAthleteById(int id);
+
+    @Query("select * from Athlete where sportid=:sid and country=:country")
+    List<Athlete> getAthleteBySport(int sid,String country);
+
+    @Query("select distinct country from Athlete order by country asc")
+    List<String> getCountries();
 
     @Query("select * from Athlete A join Sport S on (A.sportid = S.sid)")
     List<SportAndAthlete> getAthletesWithSport();

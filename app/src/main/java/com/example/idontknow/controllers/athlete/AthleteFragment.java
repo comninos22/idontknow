@@ -1,6 +1,8 @@
 package com.example.idontknow.controllers.athlete;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -25,11 +27,22 @@ import com.example.idontknow.room.SportAndAthlete;
 import com.example.idontknow.utils.ImageHandler;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class AthleteFragment extends Fragment {
+public class AthleteFragment extends Fragment{
     Connections roomdb;
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton floatingActionInsert, floatingActionDelete;
@@ -37,12 +50,20 @@ public class AthleteFragment extends Fragment {
     LinkedList<ConstraintLayout> allPreviews = new LinkedList<ConstraintLayout>();
     List<SportAndAthlete> athleteList;
     LinearLayout contentArea;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        roomdb = Connections.getInstance(getActivity().getApplicationContext());
         View v = inflater.inflate(R.layout.athlete_fragment_view, container, false);
+        // Gets the MapView from the XML layout and creates it
+
+
+        roomdb = Connections.getInstance(getActivity().getApplicationContext());
+        List<String> countries=roomdb.getCountries();
+        while(!countries.isEmpty()){
+            System.out.println(countries.remove(0));
+        }
 
 // Inflate the layout for this fragment
         return v;
@@ -212,4 +233,8 @@ public class AthleteFragment extends Fragment {
         Toast toast = Toast.makeText(getActivity().getApplicationContext(), "paused", Toast.LENGTH_SHORT);
         toast.show();
     }
+
+
+
+
 }

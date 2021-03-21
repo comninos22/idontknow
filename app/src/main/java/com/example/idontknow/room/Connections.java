@@ -138,6 +138,15 @@ public class Connections {
         return null;
     }
 
+    public List<String> getCountries(){
+        try{
+            return athleteDAO.getCountries();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public AppDatabase getDatabase(){
         return database;
     }
