@@ -62,6 +62,7 @@ public class WelcomeFragment extends Fragment {
                 Team team1= new Team(1,"ASDASDASD","toumpa","the","gr",2,"454/1/44/","imgurl");
                 Team team2= new Team(2,"QWEQWEQWE","karaiskaki","ath","gr",2,"454/1/22244/","imgurl");
                 TeamMatch match1=new TeamMatch(team1,team2,sport2,"12/2/4242","axladoxori serrwn","ellada");
+                //addTeamMatch(match3);
                 LinkedList<Athlete> athletes=new LinkedList<Athlete>();
                 athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));
                 athletes.add(new Athlete("takhs","lastname","city","country",1,"11111","imgurl"));

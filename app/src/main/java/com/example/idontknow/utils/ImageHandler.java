@@ -56,4 +56,5 @@ public class ImageHandler {
         return bitmap;
 
     }
+
 }

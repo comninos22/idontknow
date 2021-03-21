@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.idontknow.controllers.athlete.AthleteFragment;
+import com.example.idontknow.controllers.match.solomatch.SoloMatchFragment;
+import com.example.idontknow.controllers.match.teammatch.TeamMatchFragment;
 import com.example.idontknow.controllers.sport.SportFragment;
 import com.example.idontknow.controllers.WelcomeFragment;
 import com.example.idontknow.controllers.team.TeamFragment;
@@ -107,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 fragmentClass = SportFragment.class;
                 break;
             case R.id.nav_sub_first_fragment:
-                fragmentClass = SportFragment.class;
+                fragmentClass = SoloMatchFragment.class;
                 break;
             case R.id.nav_sub_second_fragment:
-                fragmentClass = SportFragment.class;
+                fragmentClass = TeamMatchFragment.class;
                 break;
             default:
                 fragmentClass = WelcomeFragment.class;

@@ -46,7 +46,7 @@ public class SportFragment extends Fragment {
         sportList = roomdb.getSports();
         contentArea = view.findViewById(R.id.sportLayout);
         deleteAllBtn = getActivity().findViewById(R.id.deleteAllButton);
-        floatingBullcrap();
+
         // get your outer relative layout
 
 

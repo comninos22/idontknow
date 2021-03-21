@@ -22,7 +22,7 @@ public class SoloMatch extends Match {
             Athlete ath2=athletes.poll();
             super.setPerformance(new TeamScore(ath1,ath2));
         }else{
-            super.setPerformance(new PerformanceOfParticipants((LinkedList)this.athletes));
+            //super.setPerformance(new PerformanceOfParticipants((LinkedList)this.athletes));
         }
     }
 

@@ -1,4 +1,6 @@
 package com.example.idontknow.controllers.match.solomatch;
 
-public class SoloMatchFragment {
+import androidx.fragment.app.Fragment;
+
+public class SoloMatchFragment extends Fragment {
 }

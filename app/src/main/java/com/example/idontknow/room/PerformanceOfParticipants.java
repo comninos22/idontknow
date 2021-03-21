@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PerformanceOfParticipants {
+public class PerformanceOfParticipants{
     private List<Participant> participants=new LinkedList<Participant>();
 
     @RequiresApi(api = Build.VERSION_CODES.N)

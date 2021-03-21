@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TeamScore {
+public class TeamScore{
     List<Integer> team1score=new LinkedList<Integer>();
     List<Integer> team2score=new LinkedList<Integer>();
     int team1NumOfGoals;

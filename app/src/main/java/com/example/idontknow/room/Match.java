@@ -3,11 +3,12 @@ package com.example.idontknow.room;
 import com.example.idontknow.room.Sport;
 
 public abstract class Match {
+    private String id;
     private Sport sport;
     private String date;
     private String city;
     private String country;
-    private Object performance;
+    private TeamScore performance;
     public Match(Sport sport, String date, String city, String country) {
         this.sport = sport;
         this.date = date;
@@ -28,11 +29,19 @@ public abstract class Match {
                 '}';
     }
 
-    public Object getPerformance() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public TeamScore getPerformance() {
         return performance;
     }
 
-    public void setPerformance(Object performance) {
+    public void setPerformance(TeamScore performance) {
         this.performance = performance;
     }
 
