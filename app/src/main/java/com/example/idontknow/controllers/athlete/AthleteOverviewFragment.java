@@ -71,6 +71,7 @@ public class AthleteOverviewFragment extends Fragment implements OnMapReadyCallb
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(my,8));
 
 
+
     }
     public LatLng getLocationFromAddress(Context context, String strAddress) {
 

@@ -3,7 +3,15 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
     }
+
+
+// Share the key with your `AndroidManifest.xml`
+//    manifestPlaceholders = [ googleMapsApiKey:"${properties.getProperty('google.maps_api_key')}"]
+//    manifestPlace
+
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.2"
         classpath 'com.google.gms:google-services:4.3.5'
@@ -17,6 +25,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 

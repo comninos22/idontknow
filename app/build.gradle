@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.google.secrets_gradle_plugin' version '0.5'
+
+
 }
 
 android {
@@ -31,6 +34,7 @@ android {
 }
 
 dependencies {
+
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.android.gms:play-services:12.0.1'
     implementation 'com.google.firebase:firebase-storage:10.0.1'
