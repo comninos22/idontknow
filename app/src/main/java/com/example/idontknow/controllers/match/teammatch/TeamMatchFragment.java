@@ -59,6 +59,7 @@ public class TeamMatchFragment extends Fragment {
             }
         });
 
+        fireDB.getTest(new PromiseLinkedList());
 
         // get your outer relative layout
 

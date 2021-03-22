@@ -123,7 +123,35 @@ public class FireDB {
         firebaseInstance.collection("TeamMatches").document(id).delete();
 
 }
+    public void getTest(boolean isDraw,IPromiseLinkedList callback){
+        TeamMatch match;
+        firebaseInstance.collection("TeamMatches")
 
+                .whereEqualTo("performance.draw",isDraw)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    private static final String TAG = "";
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            LinkedList<TeamMatch> matches=new LinkedList<TeamMatch>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                TeamMatch match=document.toObject(TeamMatch.class);
+                                match.setId(document.getId());
+                                matches.add(match);
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                System.out.println(document.getData());
+                            }
+                            callback.methodToCallBack(matches);
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+
+                });
+
+    }
 
     private TeamMatch retrieve(){
         return null;
