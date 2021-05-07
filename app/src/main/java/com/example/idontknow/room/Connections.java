@@ -20,6 +20,7 @@ public class Connections {
         sportDAO= database.getSportDAO();
         teamDAO= database.getTeamDAO();
     }
+
     public static Connections getInstance(Context context){
         synchronized (Connections.class){
             if(instance==null){
